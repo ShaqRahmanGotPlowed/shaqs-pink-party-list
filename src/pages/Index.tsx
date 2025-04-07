@@ -1,4 +1,3 @@
-
 import React from "react";
 import Header from "@/components/Header";
 import RSVPForm from "@/components/RSVPForm";
@@ -6,6 +5,7 @@ import CountdownTimer from "@/components/CountdownTimer";
 import { Separator } from "@/components/ui/separator";
 import { CalendarDays, MapPin, Clock, PartyPopper } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import SocialIcons from "@/components/SocialIcons";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -146,9 +146,12 @@ const Index = () => {
         
         {/* Footer */}
         <footer className="px-6 py-8 text-center border-t border-party-pink/20 mt-12">
-          <p className="text-party-black/70 text-sm">
-            © {new Date().getFullYear()} Shaq Rahman's Coming Out Celebration
-          </p>
+          <div className="flex flex-col items-center gap-4">
+            <SocialIcons iconSize={24} />
+            <p className="text-party-black/70 text-sm">
+              © {new Date().getFullYear()} Shaq Rahman's Coming Out Celebration
+            </p>
+          </div>
         </footer>
       </div>
     </div>

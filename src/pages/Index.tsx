@@ -10,9 +10,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Index = () => {
   const isMobile = useIsMobile();
   
-  // Set the event date to 30 days from now
-  const eventDate = new Date();
-  eventDate.setDate(eventDate.getDate() + 30);
+  // Set the event date to June 9th, 2025
+  const eventDate = new Date("2025-06-09T19:00:00");
 
   return (
     <div className="min-h-screen bg-white confetti-bg">
@@ -28,8 +27,8 @@ const Index = () => {
               <span className="text-party-black">Coming Out Celebration</span>
             </h1>
             <p className="text-lg md:text-xl text-party-black/80 max-w-2xl mx-auto mt-4">
-              Join me for a special celebration as I share my authentic self with friends and family.
-              Your presence would mean the world to me!
+              Join me for a special celebration as I proudly come out as gay and share this important moment 
+              with friends and family. Your presence would mean the world to me!
             </p>
           </div>
           
@@ -55,7 +54,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-party-black">About The Celebration</h2>
             <div className="bg-white/70 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-party-pink/20">
               <p className="text-lg text-party-black/90 mb-6">
-                This celebration marks an important milestone in my life as I embrace my authentic self. 
+                This celebration marks an important milestone in my life as I embrace my true self and come out as gay. 
                 After years of self-discovery, I'm excited to share this journey with the people who 
                 mean the most to me.
               </p>
@@ -97,14 +96,7 @@ const Index = () => {
               <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-party-pink/20 flex flex-col items-center">
                 <CalendarDays className="w-10 h-10 text-party-pink mb-4" />
                 <h3 className="text-xl font-semibold mb-2 text-party-black">Date</h3>
-                <p className="text-party-black/80">
-                  {eventDate.toLocaleDateString('en-US', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}
-                </p>
+                <p className="text-party-black/80">Monday, June 9th, 2025</p>
               </div>
               
               <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-party-pink/20 flex flex-col items-center">
@@ -116,8 +108,8 @@ const Index = () => {
               <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-party-pink/20 flex flex-col items-center md:col-span-2">
                 <MapPin className="w-10 h-10 text-party-pink mb-4" />
                 <h3 className="text-xl font-semibold mb-2 text-party-black">Location</h3>
-                <p className="text-party-black/80">The Pink Celebration Venue</p>
-                <p className="text-party-black/80">123 Rainbow Street, Celebration City</p>
+                <p className="text-party-black/80">316 Chaleur Ave</p>
+                <p className="text-party-black/80">Oshawa, ON L1J 6N6, Canada</p>
               </div>
             </div>
             

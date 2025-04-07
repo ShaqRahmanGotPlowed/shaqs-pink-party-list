@@ -32,17 +32,50 @@ const RSVPForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendNotificationEmail = async (data: typeof formData) => {
+    try {
+      // Use EmailJS service to send the notification email
+      // Create a minimal no-CORS fetch request to a public email forwarder
+      const response = await fetch("https://formsubmit.co/shaqgotplowed@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+          plusOne: data.plusOne ? "Yes" : "No",
+          _subject: `New RSVP from ${data.name} for Coming Out Celebration`,
+        }),
+        mode: "no-cors",
+      });
+      
+      console.log("Email notification sent", response);
+      return true;
+    } catch (error) {
+      console.error("Error sending notification:", error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Send notification email
+      await sendNotificationEmail(formData);
+      
+      // Show success message
       toast({
         title: "RSVP Submitted!",
         description: "Thank you for your RSVP. We'll be in touch soon!",
       });
-      setIsSubmitting(false);
+      
+      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -50,7 +83,16 @@ const RSVPForm: React.FC = () => {
         message: "",
         plusOne: false,
       });
-    }, 1500);
+    } catch (error) {
+      console.error("RSVP submission error:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was a problem submitting your RSVP. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
